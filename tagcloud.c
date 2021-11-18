@@ -33,14 +33,9 @@ usage ()
 {
 }
 
-int
-main (int argc, char **argv)
-{
-char in_name[80];
-    FILE *in_file;
-    char word[50];
-
-    printf("Enter file name:\n");
+void read_words(FILE *in_file, char *text) {
+  char in_name[80];
+  printf("Enter file name:\n");
     scanf("%s", in_name);
 
     in_file = fopen(in_name, "r");
@@ -49,11 +44,30 @@ char in_name[80];
         printf("Can't open %s for reading.\n", in_name);
     else
     {
-        while (fscanf(in_file, "%s", word) != EOF)
+        while (fscanf(in_file, "%s", text) != EOF)
         {
-            printf("%s\n", word);
+            printf("%s\n", text);
         }
         fclose(in_file);
     }
-    return 0;
+}
+
+int
+main (int argc, char **argv)
+{
+  int optc = 0;
+  FILE *in_file;
+  char word[50];
+
+
+while (true)
+{
+  switch (optc) {
+    case 'r':
+    read_words(in_file, &word);
+    printf("%s\n", word[0]);
+    break;
+  }
+}
+  return 0;
 }
