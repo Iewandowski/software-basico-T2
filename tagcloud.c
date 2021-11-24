@@ -40,8 +40,8 @@ usage ()
             - Op s -  Encerra o programa. \n");
 
 }
-
-void read_words(FILE *in_file, char *text) {
+/* Chamada da função de leitura */
+void read_words(FILE* in_file, char* text) {
   char in_name[80];
   printf("Enter file name:\n");
     scanf("%s", in_name);
@@ -59,6 +59,53 @@ void read_words(FILE *in_file, char *text) {
         fclose(in_file);
     }
 }
+
+void process_file(FILE* in_file) {
+   char ch, *line;  
+    size_t len = 0, read;  
+    char words[1000][1000], word[20];  
+    int i = 0, j, k, maxCount = 0, count;  
+  char in_name[80];
+  printf("Enter file name:\n");
+    scanf("%s", in_name);
+    in_file = fopen(in_name, "r");
+
+    if (in_file == NULL)
+        printf("Can't open %s for reading.\n", in_name);
+    else {
+      while ((read = getline(&line, &len, in_file)) != -1) {  
+          
+        for(k=0; line[k]!='\0'; k++){  
+            //Here, i represents row and j represents column of two-dimensional array words   
+            if(line[k] != ' ' && line[k] != '\n' && line[k] != ',' && line[k] != '.' ){  
+                words[i][j++] = tolower(line[k]);  
+            }  
+            else{  
+                words[i][j] = '\0';  
+                //Increment row count to store new word  
+                i++;  
+                //Set column count to 0  
+                j = 0;  
+            }  
+        }  
+    }  
+
+    }
+}
+/*
+void find_duplicate() {
+  for (int i = 0; i < size; i++) 
+  {
+    for(j=i+1; j<size; j++)
+      {
+        if(arr[i] == arr[j])
+          {
+            count++;
+            break;
+          }
+      }
+  }
+}*/
 /* Chamada da função principal */
 /*
 void 
@@ -66,50 +113,27 @@ tcg()
 { 
 } 
 */
-/* Chamada da função de leitura */
-/*void 
-lerArquivo()
-{
-    char in_name[80];
-    FILE *in_file;
-    char word[50];
 
-    //printf("Enter file name:\n");  //descomentar depois
-    //scanf("%s", in_name);
-
-    //in_file = fopen("in_name", "r");
-    in_file = fopen("lorem-ipsum.txt", "r");
-
-    if (in_file == NULL)
-        printf("Can't open %s for reading.\n", in_name);
-    else
-    {
-        while (fscanf(in_file, "%s", text) != EOF)
-        {
-            printf("%s\n", text);
-        }
-        fclose(in_file);
-    }
-}
-*/
 int
 main (int argc, char **argv)
 {
   int optc = 0;
   FILE *in_file;
   char word[50];
-
+  int size = 0;
+  //read_words(in_file, &word);
+  process_file(in_file);
+  printf("%s\n", word[0]);
 
 while (true)
 {
   switch (optc) {
     case 'r':
-    read_words(in_file, &word);
+    process_file(in_file);
     printf("%s\n", word[0]);
     break;
   }
 }
-  return 0;
      /* Opção do usuário */
     char q;
 
