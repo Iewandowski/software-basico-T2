@@ -60,77 +60,55 @@ void read_words(FILE* in_file, char* text) {
     }
 }
 
-void process_file(FILE* in_file) {
-   char ch, *line;  
-    size_t len = 0, read;  
-    char words[1000][1000], word[20];  
-    int i = 0, j, k, maxCount = 0, count;  
-  char in_name[80];
-  printf("Enter file name:\n");
-    scanf("%s", in_name);
-    in_file = fopen(in_name, "r");
+void process_file(char ** lines[200]) {
+  int i;
+  FILE *file_handle = fopen ("lorem-ipsum.txt", "r");
 
-    if (in_file == NULL)
-        printf("Can't open %s for reading.\n", in_name);
-    else {
-      while ((read = getline(&line, &len, in_file)) != -1) {  
-          
-        for(k=0; line[k]!='\0'; k++){  
-            //Here, i represents row and j represents column of two-dimensional array words   
-            if(line[k] != ' ' && line[k] != '\n' && line[k] != ',' && line[k] != '.' ){  
-                words[i][j++] = tolower(line[k]);  
-            }  
-            else{  
-                words[i][j] = '\0';  
-                //Increment row count to store new word  
-                i++;  
-                //Set column count to 0  
-                j = 0;  
-            }  
-        }  
-    }  
-
-    }
+  for (i =0; i < 200; ++i) {
+    lines[i] = malloc (128); /* allocate a memory slot of 128 chars */
+    fscanf (file_handle, "%127s", lines[i]);
+  }
+  for (i =0; i < 200; ++i)
+    free (lines[i]); /* remember to deallocated the memory allocated */
 }
-/*
-void find_duplicate() {
-  for (int i = 0; i < size; i++) 
+
+void find_duplicate(char lines[200]) {
+  int j = 0;
+  int count = 0;
+  for (int i = 0; i < 200; i++) 
   {
-    for(j=i+1; j<size; j++)
+    for(j=i+1; j<200; j++)
       {
-        if(arr[i] == arr[j])
+        if(lines[i] == lines[j])
           {
             count++;
             break;
           }
       }
   }
-}*/
-/* Chamada da função principal */
-/*
-void 
-tcg()
-{ 
-} 
-*/
+  printf("%d", count);
+}
 
 int
 main (int argc, char **argv)
 {
+  int i = 0;
+  char * lines[200];
+  process_file(lines);
+  for (i =0; i < 200; ++i)
+    printf ("%s\n", lines[i]);
+  find_duplicate(lines);
   int optc = 0;
   FILE *in_file;
+  char * vet = NULL;
   char word[50];
-  int size = 0;
-  //read_words(in_file, &word);
-  process_file(in_file);
-  printf("%s\n", word[0]);
+  char words[50];
 
 while (true)
 {
   switch (optc) {
     case 'r':
-    process_file(in_file);
-    printf("%s\n", word[0]);
+
     break;
   }
 }
