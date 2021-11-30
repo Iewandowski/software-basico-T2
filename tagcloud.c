@@ -72,7 +72,7 @@ void process_file(char ** lines[200]) {
     free (lines[i]); /* remember to deallocated the memory allocated */
 }
 
-void find_duplicate(char lines[200]) {
+void find_duplicate(char lines[200], int * res) {
   int j = 0;
   int count = 0;
   for (int i = 0; i < 200; i++) 
@@ -86,7 +86,38 @@ void find_duplicate(char lines[200]) {
           }
       }
   }
+  *res = count;
   printf("%d", count);
+}
+
+void store_duplicate(char lines[200]) {
+  int i = 0, j = 0, n = 0, count = 1;
+  int dup[200];
+  for(i = 0; i < 200; i++) {
+    scanf("%d", &lines[1]);
+    dup[i] = -1;
+  }
+  for(i = 0; i < 200; i++) {
+    count = 1;
+    for(j = i + 1; j < 200; j++) {
+    if(lines[i] == lines[j]) 
+    {
+      count++;
+      dup[j] = 0;
+    }      
+    }
+    if(dup[i] != 0) 
+    {
+      dup[i] = count;
+    }
+  }
+  
+  printf("Duplicate Elements:");
+  for(i = 0; i < 200; i++) {
+    if(dup[i] > 1) {
+      printf("%d", lines[i]);
+    }
+  }
 }
 
 int
@@ -94,16 +125,19 @@ main (int argc, char **argv)
 {
   int i = 0;
   char * lines[200];
+  int n; 
   process_file(lines);
-  for (i =0; i < 200; ++i)
-    printf ("%s\n", lines[i]);
-  find_duplicate(lines);
+  //for (i =0; i < 200; ++i)
+  //  printf ("%s\n", lines[i]);
+  //find_duplicate(lines, &n);
+  store_duplicate(lines);
+
   int optc = 0;
   FILE *in_file;
   char * vet = NULL;
   char word[50];
   char words[50];
-
+return 0;
 while (true)
 {
   switch (optc) {
