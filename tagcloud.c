@@ -40,8 +40,8 @@ usage ()
             - Op s -  Encerra o programa. \n");
 
 }
-
-void read_words(FILE *in_file, char *text) {
+/* Chamada da função de leitura */
+void read_words(FILE* in_file, char* text) {
   char in_name[80];
   printf("Enter file name:\n");
     scanf("%s", in_name);
@@ -59,57 +59,93 @@ void read_words(FILE *in_file, char *text) {
         fclose(in_file);
     }
 }
-/* Chamada da função principal */
-/*
-void 
-tcg()
-{ 
-} 
-*/
-/* Chamada da função de leitura */
-/*void 
-lerArquivo()
-{
-    char in_name[80];
-    FILE *in_file;
-    char word[50];
 
-    //printf("Enter file name:\n");  //descomentar depois
-    //scanf("%s", in_name);
+void process_file(char ** lines[200]) {
+  int i;
+  FILE *file_handle = fopen ("lorem-ipsum.txt", "r");
 
-    //in_file = fopen("in_name", "r");
-    in_file = fopen("lorem-ipsum.txt", "r");
-
-    if (in_file == NULL)
-        printf("Can't open %s for reading.\n", in_name);
-    else
-    {
-        while (fscanf(in_file, "%s", text) != EOF)
-        {
-            printf("%s\n", text);
-        }
-        fclose(in_file);
-    }
+  for (i =0; i < 200; ++i) {
+    lines[i] = malloc (128); /* allocate a memory slot of 128 chars */
+    fscanf (file_handle, "%127s", lines[i]);
+  }
+  for (i =0; i < 200; ++i)
+    free (lines[i]); /* remember to deallocated the memory allocated */
 }
-*/
+
+void find_duplicate(char lines[200], int * res) {
+  int j = 0;
+  int count = 0;
+  for (int i = 0; i < 200; i++) 
+  {
+    for(j=i+1; j<200; j++)
+      {
+        if(lines[i] == lines[j])
+          {
+            count++;
+            break;
+          }
+      }
+  }
+  *res = count;
+  printf("%d", count);
+}
+
+void store_duplicate(char lines[200]) {
+  int i = 0, j = 0, n = 0, count = 1;
+  int dup[200];
+  for(i = 0; i < 200; i++) {
+    scanf("%d", &lines[1]);
+    dup[i] = -1;
+  }
+  for(i = 0; i < 200; i++) {
+    count = 1;
+    for(j = i + 1; j < 200; j++) {
+    if(lines[i] == lines[j]) 
+    {
+      count++;
+      dup[j] = 0;
+    }      
+    }
+    if(dup[i] != 0) 
+    {
+      dup[i] = count;
+    }
+  }
+  
+  printf("Duplicate Elements:");
+  for(i = 0; i < 200; i++) {
+    if(dup[i] > 1) {
+      printf("%d", lines[i]);
+    }
+  }
+}
+
 int
 main (int argc, char **argv)
 {
+  int i = 0;
+  char * lines[200];
+  int n; 
+  process_file(lines);
+  //for (i =0; i < 200; ++i)
+  //  printf ("%s\n", lines[i]);
+  //find_duplicate(lines, &n);
+  store_duplicate(lines);
+
   int optc = 0;
   FILE *in_file;
+  char * vet = NULL;
   char word[50];
-
-
+  char words[50];
+return 0;
 while (true)
 {
   switch (optc) {
     case 'r':
-    read_words(in_file, &word);
-    printf("%s\n", word[0]);
+
     break;
   }
 }
-  return 0;
      /* Opção do usuário */
     char q;
 
