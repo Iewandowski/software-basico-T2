@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "tagcloud.h"
 
 
 #define PROGRAM_NAME "tagcloud"
@@ -32,7 +33,7 @@
 void
 usage ()
 {
-    printf("Texto usage\n\
+      printf("Texto usage\n\
             - Op l -  O tag cloud generator gera nuvem de palavras a partir de um aquivo txt.\n\
             - Op i -  Realiza a leitura de palavras em um arquivo txt. Informar nome do arquivo. \n\
             - Op t -  Exibe o resultado em arquivo txt. Palavras e frequencia. \n\
@@ -149,7 +150,7 @@ while (true)
      /* Opção do usuário */
     char q;
 
-    do{
+    while(true){
         printf("\n\nTAG Cloud:\
         \nu -> para acessar o usage; \
         \ni -> para abrir e ler arquivo;\
@@ -189,7 +190,7 @@ while (true)
             default:
             	printf("\n Opcao invalida");
         }
-    } while ((q != 's') && (q != 'S') );
+    }
 
     return 0;
 }

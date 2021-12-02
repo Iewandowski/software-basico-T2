@@ -1,7 +1,7 @@
 all: tagcloud.o
-	gcc tagcloud.o main.c -o main
+	gcc tagcloud.o tagtree.c -o main
 
-tagtree.o: tagtree.c
+tagtree.o: tagtree.h
 	gcc -c tagtree.c
 
 run:
