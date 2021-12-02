@@ -1,6 +1,6 @@
 .para {
 	text-align: center; vertical-align: middle; font-family:
-                    arial; color: white; background-color:black; border:1px solid black;
+                    arial; color: black; background-color:rgb(172, 168, 168); border:1px solid rgb(0, 0, 0);
 }
 .text1 {
 	font-size: 40px;

@@ -20,7 +20,7 @@ void createHTML(Palavras palavras[], int numPalavras){ //no momento para funcion
 
 
 //gravar arquivo texto
-    FILE *arq = fopen("index.html", "w"); //criar arquivo: w  r: leitura e a
+    FILE *arq = fopen("index.html", "w"); //criar arquivo: w 
     if (arq == NULL)                      // 0, FALSE
     {
         printf("Erro ao abrir o aqruivo de saída \n");
@@ -81,11 +81,11 @@ int
 main (int argc, char **argv)
 {
 
-Palavras palavras[] = {{"Java", 2}, {"C", 1}, {"C#", 3}, {"JavaScript", 4}, {"Python", 5}};
+Palavras palavras[] = {{"Java", 2}, {"C", 1}, {"C#", 3}, {"JavaScript", 4}, {"Python", 5}, {"Dart", 1}, {"C++", 3}, {"Go", 2}, {"Ruby", 4}, {"PHP", 5}};
 
 
 
-createHTML(palavras, 5);
+createHTML(palavras, 10);
 
 
 }
