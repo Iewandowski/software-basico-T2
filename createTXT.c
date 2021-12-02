@@ -9,6 +9,13 @@ typedef struct{
     int frequencia;
 }Palavras;
 
+// protótipo
+void createTXT(Palavras palavras[], int numPalavras);
+void createTXTordenado(Palavras palavras[], int numPalavras);
+int compare(Palavras *, Palavras *);
+
+
+
 
 /* 
 criei essa função de gerar uma saída em TXT,
@@ -16,8 +23,32 @@ assim que tiver funcionando o restante deve ser modificada
 
 */
 
-void createTXT(Palavras palavras[], int numPalavras){ //no momento para funcionar deve receber um vetor de struct com palavra e frequencia
 
+void createTXTordenado(Palavras palavras[], int numPalavras){ 
+   
+   qsort(palavras, numPalavras, sizeof(Palavras), compare);
+
+
+    for (int i = 0; i < 10; i++){
+        printf("\n%s - %d", palavras[i].palavra, palavras[i].frequencia);
+
+    }
+
+}
+
+int compare(Palavras *x, Palavras *y){
+    if (x->frequencia == y->frequencia){
+        return 0;
+    }
+    else if (x->frequencia > y->frequencia){
+        return -1;
+    }
+    else {
+        return 1;
+    }
+}
+
+void createTXT(Palavras palavras[], int numPalavras){ 
 
 //gravar arquivo texto
     FILE *arq = fopen("saida.txt", "w"); //criar arquivo
@@ -46,7 +77,8 @@ Palavras palavras[] = {{"Java", 2}, {"C", 1}, {"C#", 3}, {"JavaScript", 4}, {"Py
 
 
 
+//createTXT(palavras, 10);
+createTXTordenado(palavras, 10);
 createTXT(palavras, 10);
-
 
 }

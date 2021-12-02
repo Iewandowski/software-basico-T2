@@ -1,11 +1,11 @@
 
-Java - 2
-C - 1
-C# - 3
-JavaScript - 4
 Python - 5
-Dart - 1
-C++ - 3
-Go - 2
-Ruby - 5
 PHP - 5
+JavaScript - 4
+Ruby - 4
+C++ - 3
+C# - 3
+Java - 2
+Go - 2
+Dart - 1
+C - 1

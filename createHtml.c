@@ -9,6 +9,10 @@ typedef struct{
     int frequencia;
 }Palavras;
 
+// protótipo
+void createHTML(Palavras palavras[], int numPalavras);
+
+
 
 /* 
 criei essa função de gerar o HTML separado só para teste,
@@ -16,7 +20,8 @@ assim que tiver funcionando o restante deve ser modificada
 
 */
 
-void createHTML(Palavras palavras[], int numPalavras){ //no momento para funcionar deve receber um vetor de struct com palavra e frequencia
+
+void createHTML(Palavras palavras[], int numPalavras){ 
 
 
 //gravar arquivo texto
