@@ -1,8 +1,7 @@
-/*#ifndef TAGCLOUD_H_INCLUDED
+#ifndef TAGCLOUD_H_INCLUDED
 #define TAGCLOUD_H_INCLUDED
 #include <stdio.h>
-void read_words(FILE, char);
-void process_file(char);
-void store_duplicate(char);
+extern  void read_words(FILE*, char*);
+extern  void process_file(char***);
+extern  void store_duplicate(char*);
 #endif
-*/
