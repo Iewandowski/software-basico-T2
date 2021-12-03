@@ -41,36 +41,21 @@ usage ()
             - Op s -  Encerra o programa. \n");
 
 }
-/* Chamada da função de leitura */
-void read_words(FILE* in_file, char* text) {
-  char in_name[80];
-  printf("Enter file name:\n");
-    scanf("%s", in_name);
-
-    in_file = fopen(in_name, "r");
-
-    if (in_file == NULL)
-        printf("Can't open %s for reading.\n", in_name);
-    else
-    {
-        while (fscanf(in_file, "%s", text) != EOF)
-        {
-            printf("%s\n", text);
-        }
-        fclose(in_file);
-    }
-}
-
+/*lê arquivo e armazena palavras em string*/
 void process_file(char ** lines[200]) {
-  int i;
+  int i;      //variavel para for
   FILE *file_handle = fopen ("lorem-ipsum.txt", "r");
 
   for (i =0; i < 200; ++i) {
-    lines[i] = malloc (128); /* allocate a memory slot of 128 chars */
+    lines[i] = malloc (128);
     fscanf (file_handle, "%127s", lines[i]);
   }
   for (i =0; i < 200; ++i)
-    free (lines[i]); /* remember to deallocated the memory allocated */
+    free (lines[i]);
+}
+
+char print_file() {
+
 }
 
 void find_duplicate(char lines[200], int * res) {
@@ -92,62 +77,30 @@ void find_duplicate(char lines[200], int * res) {
 }
 
 void store_duplicate(char lines[200]) {
-  int i = 0, j = 0, n = 0, count = 1;
-  int dup[200];
-  for(i = 0; i < 200; i++) {
-    scanf("%d", &lines[1]);
-    dup[i] = -1;
-  }
-  for(i = 0; i < 200; i++) {
-    count = 1;
-    for(j = i + 1; j < 200; j++) {
-    if(lines[i] == lines[j]) 
-    {
-      count++;
-      dup[j] = 0;
-    }      
-    }
-    if(dup[i] != 0) 
-    {
-      dup[i] = count;
-    }
-  }
-  
-  printf("Duplicate Elements:");
-  for(i = 0; i < 200; i++) {
-    if(dup[i] > 1) {
-      printf("%d", lines[i]);
-    }
-  }
+//pra facilitar o mecanismo de busca
+//implementar bubble sort
+//resultado do bubble sort: actualWord[x], nextWord[x]
+//char aux[arraySize], int arrrayInt[arraySize];
+//char aux[0] = actualWord[0];
+//for i = 0; i < arraySize, i++ 
+//if actualWord[i] = nextWord[i + 1]
+//      arrrayInt[j] += 1;
+// else 
+//       j++;
+//       aux 
 }
 
 int
 main (int argc, char **argv)
 {
-  int i = 0;
   char * lines[200];
-  int n; 
   process_file(lines);
   //for (i =0; i < 200; ++i)
   //  printf ("%s\n", lines[i]);
-  //find_duplicate(lines, &n);
-  store_duplicate(lines);
 
-  int optc = 0;
   FILE *in_file;
-  char * vet = NULL;
-  char word[50];
-  char words[50];
-return 0;
-while (true)
-{
-  switch (optc) {
-    case 'r':
-
-    break;
-  }
-}
-     /* Opção do usuário */
+     
+/* Opção do usuário */
     char q;
 
     while(true){
