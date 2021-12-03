@@ -1,10 +1,8 @@
 all: tagcloud.o
-	gcc tagcloud.o tagtree.c -o main
+	gcc tagcloud.o tagcloud.c -o main
 
-tagtree.o: tagtree.h
-	gcc -c tagtree.c
+tagcloud.o: tagcloud.h
+	gcc -c tagcloud.c
 
-run:
-	./main
 clean:
 	rm ./obj/*.o
